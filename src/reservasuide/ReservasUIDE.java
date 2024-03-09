@@ -4,6 +4,10 @@
  */
 package reservasuide;
 
+import controler.UserJpaControl;
+import model.User;
+import utiles.JPAUtil;
+
 /**
  *
  * @author accel
@@ -14,7 +18,12 @@ public class ReservasUIDE {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        UserJpaControl userControl = new UserJpaControl(JPAUtil.getEntityManagerFactory());
+
+        User user = new User();
+        user.setUsername("Camila");
+        user.setPassword("password");
+        userControl.crear(user);
     }
-    
+
 }
