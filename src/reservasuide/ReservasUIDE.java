@@ -4,8 +4,13 @@
  */
 package reservasuide;
 
-import controler.UserJpaControl;
-import model.User;
+import controladores.EventoJpaControl;
+import controladores.SolicitudJpaControl;
+import controladores.UsuarioJpaControl;
+import java.util.List;
+import modelos.Evento;
+import modelos.SolicitudEvento;
+import modelos.Usuario;
 import utiles.JPAUtil;
 
 /**
@@ -18,12 +23,66 @@ public class ReservasUIDE {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        UserJpaControl userControl = new UserJpaControl(JPAUtil.getEntityManagerFactory());
 
-        User user = new User();
-        user.setUsername("Camila");
-        user.setPassword("password");
-        userControl.crear(user);
+        UsuarioJpaControl userControl = new UsuarioJpaControl(JPAUtil.getEntityManagerFactory());
+        Usuario usuario = new Usuario();
+
+        usuario.setNombre("Ana Gómez");
+        usuario.setTipoUsuario("Estudiante");
+        usuario.setCorreo("aloarte@email.com");
+        usuario.setUsuario("amloarte");
+        usuario.setContrasena("admin");
+
+        userControl.crear(usuario);
+
+        EventoJpaControl eventoControl = new EventoJpaControl(JPAUtil.getEntityManagerFactory());
+
+        Evento evento = new Evento();
+        evento.setNombre("Conferencia de Software Libre");
+        evento.setTipoEvento("Conferencia");
+        evento.setFecha("2024-03-20");
+        evento.setHora("10:00");
+        evento.setUbicacion("Aula Magna");
+        evento.setNumeroAsistentes(100);
+        evento.setDescripcion("Conferencia sobre las últimas tendencias en software libre.");
+        eventoControl.crear(evento);
+
+        List<Evento> lstEventos = eventoControl.consultarTodos();
+
+        for (Evento eventos : lstEventos) {
+            System.out.println("Evento: " + eventos.getNombre());
+            System.out.println("Fecha: " + eventos.getFecha());
+        }
+        
+        SolicitudJpaControl solicitudControl = new SolicitudJpaControl(JPAUtil.getEntityManagerFactory());
+
+        SolicitudEvento solicitudEvento = new SolicitudEvento();
+        solicitudEvento.setEvento(evento);
+        solicitudEvento.setUsuario(usuario);
+        solicitudEvento.setFechaSolicitud("2024-03-15");
+        solicitudControl.crear(solicitudEvento);
+
+
+        for (Evento events : lstEventos) {
+            System.out.println("Evento: " + events.getNombre());
+            System.out.println("Fecha: " + events.getFecha());
+
+            List<SolicitudEvento> solicitudes = solicitudControl.getSolicitudesEvento(events);
+
+            if (!solicitudes.isEmpty()) {
+                System.out.println("Solicitudes:");
+                for (SolicitudEvento solicitud : solicitudes) {
+                    System.out.println(" - " + solicitud.getUsuario().getNombre());
+                    System.out.println("    Fecha solicitud: " + solicitud.getFechaSolicitud());
+                    System.out.println("    Estado: " + solicitud.getEstado());
+                }
+            } else {
+                System.out.println("No hay solicitudes para este evento.");
+            }
+
+            System.out.println();
+        }
+
     }
 
 }

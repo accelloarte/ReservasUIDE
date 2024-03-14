@@ -1,23 +1,20 @@
-package controler;
+package controladores;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaQuery;
-import model.User;
+
+import modelos.Usuario;
 
 /**
  *
  * @author domen
  */
-public class UserJpaControl implements Serializable {
+public class UsuarioJpaControl implements Serializable {
 
     private EntityManagerFactory emf = null;
 
-    public UserJpaControl(EntityManagerFactory emf) {
+    public UsuarioJpaControl(EntityManagerFactory emf) {
         this.emf = emf;
     }
 
@@ -25,14 +22,11 @@ public class UserJpaControl implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void crear(User usuario) {
+    public void crear(Usuario usuario) {
         EntityManager em = getEntityManager();
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-                        System.out.println(usuario.getPassword());
-                        System.out.println(usuario.getUsername());
-
             em.persist(usuario);
             em.getTransaction().commit();
         } finally {

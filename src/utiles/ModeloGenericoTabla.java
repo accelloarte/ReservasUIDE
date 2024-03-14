@@ -9,7 +9,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author milton
+ * @author domen
  */
 public class ModeloGenericoTabla extends AbstractTableModel{
     private String[] columnNames;
