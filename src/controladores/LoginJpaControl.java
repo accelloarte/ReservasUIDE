@@ -24,7 +24,7 @@ public class LoginJpaControl implements Serializable {
     }
 
     
-    public boolean login(String usuario, String contrasena) {
+    public Usuario login(String usuario, String contrasena) {
         EntityManager em = getEntityManager();
 
         try {
@@ -32,10 +32,14 @@ public class LoginJpaControl implements Serializable {
                     .setParameter("username", usuario)
                     .getSingleResult();
 
-               return usuarioEncontrado != null && usuarioEncontrado.getContrasena().equals(contrasena);
+            if (usuarioEncontrado != null && usuarioEncontrado.getContrasena().equals(contrasena)) {
+                return usuarioEncontrado;
+            } else {
+                return null; 
+            }
 
         } catch (NoResultException e) {
-            return false;
+            return null;
         } catch (Exception e) {
             throw new RuntimeException("Error al realizar el login", e);
         } finally {

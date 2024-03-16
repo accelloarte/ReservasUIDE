@@ -29,9 +29,17 @@ public class ReservasUIDE {
 
         usuario.setNombre("Ana Gómez");
         usuario.setTipoUsuario("Estudiante");
-        usuario.setCorreo("aloarte@email.com");
-        usuario.setUsuario("amloarte");
+        usuario.setCorreo("ana@email.com");
+        usuario.setUsuario("agomez");
         usuario.setContrasena("admin");
+        
+        userControl.crear(usuario);
+
+        usuario.setNombre("Camila Loarte");
+        usuario.setTipoUsuario("Estudiante");
+        usuario.setCorreo("caloarte@email.com");
+        usuario.setUsuario("caloarte");
+        usuario.setContrasena("123");
 
         userControl.crear(usuario);
 
@@ -47,21 +55,16 @@ public class ReservasUIDE {
         evento.setDescripcion("Conferencia sobre las últimas tendencias en software libre.");
         eventoControl.crear(evento);
 
-        List<Evento> lstEventos = eventoControl.consultarTodos();
-
-        for (Evento eventos : lstEventos) {
-            System.out.println("Evento: " + eventos.getNombre());
-            System.out.println("Fecha: " + eventos.getFecha());
-        }
-        
         SolicitudJpaControl solicitudControl = new SolicitudJpaControl(JPAUtil.getEntityManagerFactory());
 
         SolicitudEvento solicitudEvento = new SolicitudEvento();
         solicitudEvento.setEvento(evento);
         solicitudEvento.setUsuario(usuario);
         solicitudEvento.setFechaSolicitud("2024-03-15");
+        solicitudEvento.setEstado("PENDIENTE");
         solicitudControl.crear(solicitudEvento);
-
+        
+        List<Evento> lstEventos = eventoControl.consultarTodos();
 
         for (Evento events : lstEventos) {
             System.out.println("Evento: " + events.getNombre());
