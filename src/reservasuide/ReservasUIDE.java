@@ -16,7 +16,7 @@ import utiles.JPAUtil;
 
 /**
  *
- * @author accel
+ * @author domen
  */
 public class ReservasUIDE {
 

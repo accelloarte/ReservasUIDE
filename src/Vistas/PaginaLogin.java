@@ -11,7 +11,7 @@ import utiles.JPAUtil;
 
 /**
  *
- * @author accel
+ * @author domen
  */
 public class PaginaLogin extends javax.swing.JFrame {
 

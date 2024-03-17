@@ -16,10 +16,9 @@ import javax.persistence.Table;
 
 /**
  *
- * @author accel
+ * @author domen
  */
 @Entity
-@Table(name = "usuarios")
 public class Usuario {
 
     @Id

@@ -4,6 +4,7 @@
  */
 package modelos;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +14,7 @@ import javax.persistence.OneToOne;
 
 /**
  *
- * @author accel
+ * @author domen
  */
 @Entity
 public class Evento {
@@ -27,11 +28,10 @@ public class Evento {
     private String hora;
     private int numeroAsistentes;
     private String descripcion;
-    private String estado; // Finalizado, En curso, Por empezar
     @ManyToOne
     private Usuario usuario;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Lugar lugar;
 
     public Lugar getLugar() {
@@ -99,14 +99,6 @@ public class Evento {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public Usuario getUsuario() {

@@ -8,7 +8,7 @@ import modelos.Usuario;
 
 /**
  *
- * @author accel
+ * @author domen
  */
 
 public class LoginJpaControl implements Serializable {

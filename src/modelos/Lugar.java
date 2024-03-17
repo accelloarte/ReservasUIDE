@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 
 /**
  *
- * @author accel
+ * @author domen
  */
 @Entity
 public class Lugar {
@@ -74,6 +74,11 @@ public class Lugar {
 
     public void setDisponibilidad(String disponibilidad) {
         this.disponibilidad = disponibilidad;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
     }
 
 }

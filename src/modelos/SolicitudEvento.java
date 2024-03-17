@@ -4,8 +4,7 @@
  */
 package modelos;
 
-import java.time.LocalDateTime;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +13,7 @@ import javax.persistence.ManyToOne;
 
 /**
  *
- * @author accel
+ * @author domen
  */
 
 @Entity
@@ -32,7 +31,6 @@ public class SolicitudEvento {
     private String fechaSolicitud;
     private String estado; // Pendiente, Aprobado, Rechazado
     private String comentario;
-    private String documentacion;
 
     public int getId() {
         return id;
@@ -81,15 +79,5 @@ public class SolicitudEvento {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-
-    public String getDocumentacion() {
-        return documentacion;
-    }
-
-    public void setDocumentacion(String documentacion) {
-        this.documentacion = documentacion;
-    }
-
-   
 
 }
