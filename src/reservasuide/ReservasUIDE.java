@@ -9,6 +9,7 @@ import controladores.SolicitudJpaControl;
 import controladores.UsuarioJpaControl;
 import java.util.List;
 import modelos.Evento;
+import modelos.Lugar;
 import modelos.SolicitudEvento;
 import modelos.Usuario;
 import utiles.JPAUtil;
@@ -44,13 +45,19 @@ public class ReservasUIDE {
         userControl.crear(usuario);
 
         EventoJpaControl eventoControl = new EventoJpaControl(JPAUtil.getEntityManagerFactory());
-
+        
+        Lugar ubicacion = new Lugar();
+        ubicacion.setNombre("AULA MAGNA");
+        ubicacion.setTipoLugar("AUDITORIO");
+        ubicacion.setCapacidad(20);
+        ubicacion.setDisponibilidad("LIBRE");
+        
         Evento evento = new Evento();
         evento.setNombre("Conferencia de Software Libre");
         evento.setTipoEvento("Conferencia");
         evento.setFecha("2024-03-20");
         evento.setHora("10:00");
-        evento.setUbicacion("Aula Magna");
+        evento.setLugar(ubicacion);
         evento.setNumeroAsistentes(100);
         evento.setDescripcion("Conferencia sobre las últimas tendencias en software libre.");
         eventoControl.crear(evento);

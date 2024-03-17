@@ -25,13 +25,23 @@ public class Evento {
     private String tipoEvento;
     private String fecha;
     private String hora;
-    private String ubicacion;
     private int numeroAsistentes;
     private String descripcion;
-    private String estado; // Pendiente, Aprobado, Rechazado
+    private String estado; // Finalizado, En curso, Por empezar
     @ManyToOne
     private Usuario usuario;
-    
+
+    @ManyToOne
+    private Lugar lugar;
+
+    public Lugar getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(Lugar lugar) {
+        this.lugar = lugar;
+    }
+
     @OneToOne(mappedBy = "evento")
     private SolicitudEvento solicitudEvento;
 
@@ -73,14 +83,6 @@ public class Evento {
 
     public void setHora(String hora) {
         this.hora = hora;
-    }
-
-    public String getUbicacion() {
-        return ubicacion;
-    }
-
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
     }
 
     public int getNumeroAsistentes() {

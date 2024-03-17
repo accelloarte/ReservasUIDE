@@ -13,12 +13,12 @@ import utiles.JPAUtil;
  *
  * @author accel
  */
-public class JFLogin extends javax.swing.JFrame {
+public class PaginaLogin extends javax.swing.JFrame {
 
     /**
      * Creates new form JFLogin
      */
-    public JFLogin() {
+    public PaginaLogin() {
         initComponents();
     }
 
@@ -128,7 +128,7 @@ public class JFLogin extends javax.swing.JFrame {
 
         try {
             if (user != null) {
-                JPrincipal menu = new JPrincipal(user);
+                Escritorio menu = new Escritorio(user);
                 this.setVisible(false);
                 this.dispose();
                 menu.setVisible(true);
@@ -160,20 +160,21 @@ public class JFLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFLogin().setVisible(true);
+                new PaginaLogin().setVisible(true);
             }
         });
     }
